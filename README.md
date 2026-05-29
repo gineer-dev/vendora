@@ -1,4 +1,3 @@
-#Vendora
 Vendora is a modern commerce operating system that combines a customer-facing marketplace with a powerful business management platform.
 
 Whether selling vehicles, motorcycles, electronics, machinery, appliances, furniture, real estate, or other products, Vendora provides everything businesses need to manage inventory, operations, sales, maintenance, customers, and profitability in one centralized solution.
