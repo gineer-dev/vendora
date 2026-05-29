@@ -1,225 +1,67 @@
 # Vendora
 
-> **The Operating System for Modern Commerce Businesses**
+Vendora is a full-stack Commerce Operating System and Marketplace Platform built with Next.js 15, TypeScript, Supabase, Tailwind CSS, and ShadCN-style UI primitives. It combines a public marketplace with a protected business management portal for inventory, sales, reservations, CRM, maintenance, finance, analytics, branch management, notifications, and audit logging.
 
-Vendora is a modern commerce operating system that combines a customer-facing marketplace with a powerful business management platform.
+## Stack
 
-Whether you're selling vehicles, motorcycles, electronics, machinery, appliances, furniture, real estate, or any other products, Vendora provides everything businesses need to manage inventory, operations, sales, maintenance, customers, and profitability from a single centralized platform.
+- Next.js 15 App Router and TypeScript strict mode
+- Supabase Auth, PostgreSQL, Row Level Security, and Storage
+- Tailwind CSS 4 with accessible ShadCN-compatible primitives
+- Zod validation, Server Actions, and React Hook Form-ready schemas
+- TanStack Table for management tables
+- Recharts for executive dashboards
+- PWA manifest, service worker, offline fallback, and installable shell
 
----
+## Getting Started
 
-## 🚀 Overview
+Install dependencies:
 
-Vendora bridges the gap between traditional marketplace platforms and enterprise business management systems.
+```bash
+npm install
+```
 
-Instead of using separate tools for inventory, sales, customer management, maintenance tracking, and reporting, Vendora brings everything together into one unified ecosystem.
+Create `.env.local` from `.env.example`:
 
-The platform consists of:
+```bash
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_publishable_your_key
+SUPABASE_SERVICE_ROLE_KEY=your_server_only_service_role_key
+```
 
-* **Marketplace Portal** — Customer-facing platform for browsing, searching, reserving, and purchasing products.
-* **Business Management Portal** — Internal operational platform for managing inventory, customers, sales, maintenance, finances, and analytics.
+Apply the Supabase schema in `supabase/migrations/202605290001_init_vendora.sql`, then run `supabase/seed.sql`.
 
----
+Start development:
 
-## ✨ Core Capabilities
+```bash
+npm run dev
+```
 
-### Marketplace Management
+Open:
 
-* Multi-category product listings
-* Product search and filtering
-* Reservations and inquiries
-* Customer accounts and favorites
-* Product comparison
-* Online marketplace management
+- Marketplace: `http://localhost:3000`
+- Product listings: `http://localhost:3000/marketplace`
+- Business dashboard: `http://localhost:3000/dashboard`
 
-### Inventory & Asset Management
+## Key Routes
 
-* Inventory tracking
-* Product lifecycle management
-* Stock monitoring
-* Asset condition management
-* Acquisition and valuation tracking
+- Public marketplace: `/`, `/marketplace`, `/marketplace/[productId]`, `/categories`, `/favorites`, `/inquiries`, `/reservations`
+- Auth: `/login`, `/register`, `/forgot-password`
+- Dashboard: `/dashboard`, `/dashboard/products`, `/dashboard/products/new`, `/dashboard/inventory`, `/dashboard/inquiries`, `/dashboard/reservations`, `/dashboard/sales`, `/dashboard/customers`, `/dashboard/maintenance`, `/dashboard/inspections`, `/dashboard/expenses`, `/dashboard/reports`, `/dashboard/branches`, `/dashboard/users`, `/dashboard/settings`, `/dashboard/audit-logs`
 
-### Sales & Order Management
+## Supabase
 
-* Quotations
-* Reservations
-* Sales orders
-* Invoice generation
-* Payment tracking
-* Revenue monitoring
+The app uses `@supabase/ssr` clients:
 
-### Customer Relationship Management (CRM)
+- `lib/supabase/client.ts` for Client Components
+- `lib/supabase/server.ts` for Server Components, Server Actions, and Route Handlers
+- `proxy.ts` and `lib/supabase/proxy.ts` for protected dashboard route guarding and session refresh
 
-* Customer profiles
-* Lead management
-* Inquiry tracking
-* Customer history
-* Sales pipeline monitoring
+The migration includes RBAC tables, branch-aware records, product lifecycle fields, reservations, sales, CRM, inspections, maintenance, finance, notifications, audit logs, and Storage policies for `vendora-media`.
 
-### Inspection & Maintenance Tracking
+## PWA
 
-* Inspection workflows
-* Maintenance scheduling
-* Repair tracking
-* Service history
-* Work order management
+The PWA files live in `public/manifest.json`, `public/sw.js`, `public/icons/icon.svg`, and `app/offline/page.tsx`. The service worker caches basic marketplace pages and the dashboard shell for offline fallback.
 
-### Product Lifecycle Management
+## Development Notes
 
-* Draft
-* Inspection
-* Maintenance
-* Ready for Sale
-* Reserved
-* Sold
-* Archived
-
-### Financial Management
-
-* Expense tracking
-* Revenue tracking
-* Profitability analysis
-* Cost management
-* Financial reporting
-
-### Analytics & Reporting
-
-* Executive dashboards
-* Sales reports
-* Inventory reports
-* Maintenance reports
-* Customer analytics
-* Profitability insights
-
-### Enterprise Features
-
-* Multi-branch management
-* Role-based access control (RBAC)
-* Audit trail logging
-* Activity monitoring
-* Notification management
-
----
-
-## 🏢 Target Industries
-
-Vendora is designed to support a wide range of industries and business models.
-
-### Automotive
-
-* Vehicle dealerships
-* Motorcycle dealerships
-* Commercial vehicle traders
-
-### Real Estate
-
-* Property brokers
-* Real estate agencies
-* Property developers
-
-### Retail & Electronics
-
-* Electronics stores
-* Appliance retailers
-* Gadget resellers
-
-### Furniture & Home Living
-
-* Furniture stores
-* Home improvement businesses
-
-### Industrial & Equipment
-
-* Machinery traders
-* Equipment dealers
-* Equipment rental businesses
-
-### General Commerce
-
-* Buy-and-sell enterprises
-* Trading companies
-* Multi-category marketplaces
-
----
-
-## 🎯 Vision
-
-To become the operating system for modern commerce businesses by providing a unified platform for managing products, customers, operations, and sales.
-
----
-
-## 🔑 Key Benefits
-
-* Centralized business operations
-* Improved inventory visibility
-* Better customer management
-* Streamlined sales processes
-* Maintenance and service tracking
-* Real-time business insights
-* Scalable multi-branch architecture
-* Enhanced operational efficiency
-
----
-
-## 🌐 Platform Architecture
-
-### Marketplace Interface
-
-Customer-facing platform where users can:
-
-* Browse products
-* Search and filter listings
-* View detailed product information
-* Submit inquiries
-* Make reservations
-* Track transactions
-
-### Management Interface
-
-Internal business portal where teams can:
-
-* Manage inventory
-* Track product conditions
-* Handle maintenance workflows
-* Process sales
-* Manage customers
-* Monitor finances
-* Generate reports
-* Analyze business performance
-
----
-
-## 🔒 Security & Compliance
-
-* Secure Authentication
-* Role-Based Access Control (RBAC)
-* Audit Logging
-* Activity Monitoring
-* Data Access Permissions
-* Multi-User Support
-
----
-
-## 📈 Future Roadmap
-
-### Phase 2
-
-* AI Product Valuation
-* AI Maintenance Recommendations
-* OCR Document Processing
-* Marketplace Messaging
-
-### Phase 3
-
-* Mobile Applications
-* Vendor Marketplace
-* Franchise Management
-* Accounting System Integration
-* Advanced Business Intelligence
-
----
-
-## 💡 Tagline
-
-**Vendora — The Operating System for Modern Commerce.**
+The UI currently includes sample data fallbacks so the app is useful before Supabase credentials are configured. When Supabase environment variables are present, services and Server Actions are structured to use Supabase tables and RLS.

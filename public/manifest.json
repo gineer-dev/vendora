@@ -1,0 +1,22 @@
+{
+  "name": "Vendora",
+  "short_name": "Vendora",
+  "description": "A commerce operating system and marketplace platform for managing products, inventory, sales, customers, operations, maintenance, finances, and analytics.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f7f5",
+  "theme_color": "#611824",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    { "name": "Marketplace", "url": "/marketplace" },
+    { "name": "Dashboard", "url": "/dashboard" }
+  ]
+}

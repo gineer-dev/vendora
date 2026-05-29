@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+:root {
+  --background: #dedfdd;
+  --foreground: #14181b;
+  --card: #ffffff;
+  --muted: #f2f3f2;
+  --muted-foreground: #777f83;
+  --border: #d7d9d8;
+  --primary: #4a86a5;
+  --primary-foreground: #ffffff;
+  --accent: #151719;
+  --accent-foreground: #ffffff;
+  --success: #3c8a63;
+  --warning: #c18b35;
+  --danger: #a44747;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  outline-color: var(--accent);
+}
+
+.vendora-shell {
+  background:
+    radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.75), transparent 320px),
+    linear-gradient(180deg, #e4e5e3 0%, #d7d9d8 100%),
+    var(--background);
+}
+
+.reference-surface {
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow:
+    0 18px 30px rgba(23, 29, 33, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.88);
+}
+
+.soft-control {
+  box-shadow:
+    0 12px 18px rgba(37, 45, 49, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
